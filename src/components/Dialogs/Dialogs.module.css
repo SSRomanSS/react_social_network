@@ -1,0 +1,24 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems {
+    margin: 10px;
+}
+
+.dialogsItems a {
+    color: white;
+    text-decoration: none;
+
+}
+
+.dialog {
+    margin: 10px;
+}
+.messages {
+    margin: 10px;
+}
+.message {
+    margin: 10px;
+}
