@@ -1,5 +1,9 @@
 const ADD_NEW_POST = 'ADD-NEW-POST'
 const UPDATE_TEXT = 'UPDATE-TEXT'
+const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE'
+const UPDATE_MESSAGE_BODY = 'UPDATE_MESSAGE_BODY'
+
+
 
 
 
@@ -32,6 +36,7 @@ let store = {
                 {message: 'Yo'},
                 {message: 'Bye'},
             ],
+            newMessageBody: '',
         },
         sidebar: {
             friends: [
@@ -74,6 +79,18 @@ let store = {
                 this._state.profilePage.textAreaData = obj.newText;
                 this.rerender(this._state);
                 break;
+           case(ADD_NEW_MESSAGE):
+                let newMessage = {
+                    message: this._state.messagesPage.newMessageBody,
+                }
+                this._state.messagesPage.messages.push(newMessage);
+                this._state.messagesPage.newMessageBody = '';
+                this.rerender(this._state);
+                break;
+            case(UPDATE_MESSAGE_BODY):
+                this._state.messagesPage.newMessageBody = obj.newBody;
+                this.rerender(this._state);
+                break;
             default:
                 break;
 
@@ -88,6 +105,9 @@ let store = {
 
 export const addPostAction = () => ({type: ADD_NEW_POST})
 export const updateTextAction = (text) => ({type: UPDATE_TEXT, newText: text})
+
+export const addMessageAction = () => ({type: ADD_NEW_MESSAGE})
+export const updateMessageBodyAction = (body) => ({type: UPDATE_MESSAGE_BODY, newBody: body})
 
 
 
