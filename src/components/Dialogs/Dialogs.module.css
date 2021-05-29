@@ -4,6 +4,7 @@
 }
 
 .dialogsItems {
+
     margin: 10px;
 }
 
@@ -12,13 +13,10 @@
     text-decoration: none;
 
 }
-
-.dialog {
-    margin: 10px;
-}
 .messages {
     margin: 10px;
 }
-.message {
-    margin: 10px;
+
+.sentMessage {
+
 }
