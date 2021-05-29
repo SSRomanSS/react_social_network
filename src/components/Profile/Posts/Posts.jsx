@@ -7,9 +7,13 @@ function Posts(props) {
     let newPostElement = React.createRef();
 
 
-
-    let addPost = () => props.addPost(newPostElement.current.value)
-    let updateData = () => props.updateData(newPostElement.current.value)
+    let addPost = () => props.dispatch({
+        type: 'ADD-NEW-POST'
+    })
+    let updateData = () => props.dispatch({
+        type: 'UPDATE-TEXT',
+        newText: newPostElement.current.value
+    })
 
 
     return (

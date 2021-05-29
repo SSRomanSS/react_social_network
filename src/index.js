@@ -1,11 +1,10 @@
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import state, {subscribe} from './state'
+import store from './state'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {addPost, setTextAreaData} from './state'
 import {BrowserRouter} from "react-router-dom";
 
 
@@ -14,15 +13,14 @@ export let rerenderEntireTree = (state) => {
         <React.StrictMode>
             <BrowserRouter>
                 <App state={state}
-                     addPost={addPost}
-                     updateData={setTextAreaData}/>
+                     dispatch={store.dispatch.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
-rerenderEntireTree(state)
-subscribe(rerenderEntireTree)
+rerenderEntireTree(store.getState(),)
+store.subscribe(rerenderEntireTree)
 
 
 // If you want to start measuring performance in your app, pass a function
