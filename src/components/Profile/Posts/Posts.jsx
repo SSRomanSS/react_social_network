@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from './Post/Post.jsx'
+import {addPostAction, updateTextAction} from "../../../state";
 
 
 function Posts(props) {
@@ -7,13 +8,8 @@ function Posts(props) {
     let newPostElement = React.createRef();
 
 
-    let addPost = () => props.dispatch({
-        type: 'ADD-NEW-POST'
-    })
-    let updateData = () => props.dispatch({
-        type: 'UPDATE-TEXT',
-        newText: newPostElement.current.value
-    })
+    let addPost = () => props.dispatch(addPostAction())
+    let updateData = () => props.dispatch(updateTextAction(newPostElement.current.value))
 
 
     return (

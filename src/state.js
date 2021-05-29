@@ -1,3 +1,8 @@
+const ADD_NEW_POST = 'ADD-NEW-POST'
+const UPDATE_TEXT = 'UPDATE-TEXT'
+
+
+
 let store = {
     _state: {
         profilePage: {
@@ -29,25 +34,25 @@ let store = {
             ],
         },
         sidebar: {
-        friends: [
-            {
-                avatar_url: 'https://pyxis.nymag.com/v1/imgs/e6c/02c/cbe672af6609198720b69efd475ab5f641-avatar-last-airbender.rsquare.w1200.jpg',
-                name: 'Oleg'
-            },
-            {
-                avatar_url: 'https://pyxis.nymag.com/v1/imgs/e6c/02c/cbe672af6609198720b69efd475ab5f641-avatar-last-airbender.rsquare.w1200.jpg',
-                name: 'Roman'
-            },
-            {
-                avatar_url: 'https://pyxis.nymag.com/v1/imgs/e6c/02c/cbe672af6609198720b69efd475ab5f641-avatar-last-airbender.rsquare.w1200.jpg',
-                name: 'Sasha'
-            },
-        ],
-    }
+            friends: [
+                {
+                    avatar_url: 'https://pyxis.nymag.com/v1/imgs/e6c/02c/cbe672af6609198720b69efd475ab5f641-avatar-last-airbender.rsquare.w1200.jpg',
+                    name: 'Oleg'
+                },
+                {
+                    avatar_url: 'https://pyxis.nymag.com/v1/imgs/e6c/02c/cbe672af6609198720b69efd475ab5f641-avatar-last-airbender.rsquare.w1200.jpg',
+                    name: 'Roman'
+                },
+                {
+                    avatar_url: 'https://pyxis.nymag.com/v1/imgs/e6c/02c/cbe672af6609198720b69efd475ab5f641-avatar-last-airbender.rsquare.w1200.jpg',
+                    name: 'Sasha'
+                },
+            ],
+        }
 
     },
     getState() {
-        return this._state
+        return this._state;
     },
     render() {
 
@@ -55,7 +60,7 @@ let store = {
 
     dispatch(obj) {
         switch (obj.type) {
-            case('ADD-NEW-POST'):
+            case(ADD_NEW_POST):
                 let newPost = {
                     id: this._state.profilePage.posts.length + 1,
                     message: this._state.profilePage.textAreaData,
@@ -65,19 +70,26 @@ let store = {
                 this._state.profilePage.textAreaData = '';
                 this.rerender(this._state);
                 break;
-            case('UPDATE-TEXT'):
+            case(UPDATE_TEXT):
                 this._state.profilePage.textAreaData = obj.newText;
                 this.rerender(this._state);
+                break;
+            default:
                 break;
 
         }
     },
 
     subscribe(observer) {
-        this.rerender = observer
+        this.rerender = observer;
     }
 
 }
+
+export const addPostAction = () => ({type: ADD_NEW_POST})
+export const updateTextAction = (text) => ({type: UPDATE_TEXT, newText: text})
+
+
 
 
 
