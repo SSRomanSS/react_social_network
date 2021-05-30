@@ -1,6 +1,6 @@
 import React from 'react';
 import Post from './Post/Post.jsx'
-import {addPostAction, updateTextAction} from "../../../state";
+import {addPostAction, updateTextAction} from "../../../redux/profileReducer";
 
 
 function Posts(props) {

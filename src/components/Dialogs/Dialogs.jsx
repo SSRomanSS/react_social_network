@@ -2,7 +2,7 @@ import classes from './Dialogs.module.css'
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import React from "react";
-import {addMessageAction, updateMessageBodyAction} from "../../state";
+import {addMessageAction, updateMessageBodyAction} from "../../redux/dialogReducer";
 
 
 
