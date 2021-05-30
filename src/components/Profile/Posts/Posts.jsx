@@ -1,15 +1,23 @@
 import React from 'react';
 import Post from './Post/Post.jsx'
-import {addPostAction, updateTextAction} from "../../../redux/profileReducer";
+
 
 
 function Posts(props) {
-    let PostsData = props.posts;
+
+    let postsData = props.posts;
+    let postsList = postsData.map(el => <Post text={el.message} likes={el.likes}/>)
     let newPostElement = React.createRef();
 
 
-    let addPost = () => props.dispatch(addPostAction())
-    let updateData = () => props.dispatch(updateTextAction(newPostElement.current.value))
+    let addPost = () => {
+        props.addPost()
+    }
+
+    let updateData = () => {
+        let text = newPostElement.current.value
+        props.updateData(text)
+    }
 
 
     return (
@@ -25,7 +33,7 @@ function Posts(props) {
                 </div>
             </div>
             <div>
-                {PostsData.map(el => <Post text={el.message} likes={el.likes}/>)}
+                {postsList}
             </div>
         </div>
     )

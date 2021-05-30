@@ -9,22 +9,18 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 
 
-export let rerenderEntireTree = (state) => {
+export let rerenderEntireTree = () => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state}
-                     dispatch={store.dispatch.bind(store)}/>
+                <App store={store}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
-rerenderEntireTree(store.getState(),)
-store.subscribe(() => {
-    let state = store.getState();
-    rerenderEntireTree(state)
-})
+rerenderEntireTree()
+store.subscribe(rerenderEntireTree)
 
 
 // If you want to start measuring performance in your app, pass a function
