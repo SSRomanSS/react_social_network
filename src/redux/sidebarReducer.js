@@ -1,31 +1,22 @@
-switch (obj.type) {
-            case(ADD_NEW_POST):
-                let newPost = {
-                    id: this._state.profilePage.posts.length + 1,
-                    message: this._state.profilePage.textAreaData,
-                    likes: 0,
-                }
-                this._state.profilePage.posts.push(newPost);
-                this._state.profilePage.textAreaData = '';
-                this.rerender(this._state);
-                break;
-            case(UPDATE_TEXT):
-                this._state.profilePage.textAreaData = obj.newText;
-                this.rerender(this._state);
-                break;
-           case(ADD_NEW_MESSAGE):
-                let newMessage = {
-                    message: this._state.messagesPage.newMessageBody,
-                }
-                this._state.messagesPage.messages.push(newMessage);
-                this._state.messagesPage.newMessageBody = '';
-                this.rerender(this._state);
-                break;
-            case(UPDATE_MESSAGE_BODY):
-                this._state.messagesPage.newMessageBody = obj.newBody;
-                this.rerender(this._state);
-                break;
-            default:
-                break;
-
+let initialState = {
+            friends: [
+                {
+                    avatar_url: 'https://pyxis.nymag.com/v1/imgs/e6c/02c/cbe672af6609198720b69efd475ab5f641-avatar-last-airbender.rsquare.w1200.jpg',
+                    name: 'Oleg'
+                },
+                {
+                    avatar_url: 'https://pyxis.nymag.com/v1/imgs/e6c/02c/cbe672af6609198720b69efd475ab5f641-avatar-last-airbender.rsquare.w1200.jpg',
+                    name: 'Roman'
+                },
+                {
+                    avatar_url: 'https://pyxis.nymag.com/v1/imgs/e6c/02c/cbe672af6609198720b69efd475ab5f641-avatar-last-airbender.rsquare.w1200.jpg',
+                    name: 'Sasha'
+                },
+            ],
         }
+
+const sidebarReducer = (state=initialState, action) => {
+    return state;
+}
+
+export default sidebarReducer;
