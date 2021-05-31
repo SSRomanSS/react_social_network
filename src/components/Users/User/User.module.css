@@ -1,0 +1,4 @@
+.user {
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+}
