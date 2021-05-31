@@ -2,3 +2,9 @@
     display: grid;
     grid-template-columns: 4fr 4fr 4fr;
 }
+
+.user img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}

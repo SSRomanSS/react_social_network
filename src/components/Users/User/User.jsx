@@ -1,4 +1,5 @@
 import classes from './User.module.css'
+import defaultLogo from'../../../assets/images/img.png'
 
 function User(props) {
 
@@ -8,20 +9,20 @@ function User(props) {
     return (
         <div className={classes.user}>
             <div>
-                <img src={props.user.avatarUrl}/>
+                <img src={props.user.photos.small || defaultLogo}/>
             </div>
             <div>
-                {props.user.status}
+                {props.user.status || 'Life is good!!!'}
             </div>
             <div>
-                {props.user.location.country}
+
             </div>
             <div>
-                {props.user.fullName}
+                {props.user.name}
             </div>
             <div></div>
             <div>
-                {props.user.location.city}
+
             </div>
             <div>
                 {props.user.followed ?
