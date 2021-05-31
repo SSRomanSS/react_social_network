@@ -3,3 +3,8 @@
     grid-template-columns: 4fr 4fr 4fr;
 }
 
+.activePage {
+    font-weight: bold;
+    font-size: 20px;
+}
+
