@@ -3,11 +3,13 @@ import User from "./User/User";
 const axios = require('axios')
 
 class Users extends React.Component {
-    getUsers = () => {
-        if (this.props.users.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then((data) => this.props.setUsers(data.data.items))
+
+    constructor(props) {
+        super(props);
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then((data) => this.props.setUsers(data.data.items))
     }
-    }
+
 
     UsersData = () => this.props.users.map(el => <User user={el}
                                                 followUser={this.props.followUser}
@@ -16,7 +18,6 @@ class Users extends React.Component {
     render() {
         return (
         <div>
-            <button onClick={this.getUsers}>Get Users</button>
             {this.UsersData()}
         </div>
     )
