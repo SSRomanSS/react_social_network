@@ -18,11 +18,12 @@ let Users = (props) => {
 
 
     return (
+
         <div>
             <div>
                 {
                     pages.map(p => {
-                        return <span onClick={() => props.getCurrentPageUsers(p)}
+                        return <span onClick={(e) => props.getCurrentPageUsers(p)}
                                      className={props.currentPage === p && classes.activePage}>{p}</span>
                     })
                 }

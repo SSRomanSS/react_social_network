@@ -29,7 +29,7 @@ class UsersAPIContainer extends React.Component {
             })
     }
 
-    getCurrentPageUsers(currentPage) {
+    getCurrentPageUsers = (currentPage) => {
         this.props.setIsFetched(false)
         this.props.setCurrentPage(currentPage);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`)
@@ -39,6 +39,16 @@ class UsersAPIContainer extends React.Component {
             })
     }
 
+    // getCurrentPageUsers (currentPage) {
+    //     this.props.setIsFetched(false)
+    //     this.props.setCurrentPage(currentPage);
+    //     axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`)
+    //         .then((data) => {
+    //             this.props.setUsers(data.data.items)
+    //             this.props.setIsFetched(true)
+    //         })
+    // }
+
 
     render() {
         if (this.props.isFetched) {
@@ -46,6 +56,7 @@ class UsersAPIContainer extends React.Component {
                 <Users followUser={this.props.followUser}
                        unfollowUser={this.props.unfollowUser}
                        getCurrentPageUsers={this.getCurrentPageUsers}
+                       // getCurrentPageUsers={this.getCurrentPageUsers.bind(this)}
                        currentPage={this.props.currentPage}
                        users={this.props.users}
                        pageSize={this.props.pageSize}
