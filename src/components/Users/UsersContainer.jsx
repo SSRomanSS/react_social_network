@@ -1,12 +1,12 @@
 import {connect} from "react-redux";
 import Users from "./Users";
 import {
-    followUserAction,
-    unfollowUserAction,
-    setUsersAction,
-    setCurrentPageAction,
-    setTotalUsersAction,
-    setIsFetchedAction
+    followUser,
+    unfollowUser,
+    setUsers,
+    setCurrentPage,
+    setTotalUsers,
+    setIsFetched
 } from "../../redux/usersReducer";
 import React from "react";
 import Preloader from "../common/Preloader/Preloader";
@@ -56,7 +56,7 @@ class UsersAPIContainer extends React.Component {
                 <Users followUser={this.props.followUser}
                        unfollowUser={this.props.unfollowUser}
                        getCurrentPageUsers={this.getCurrentPageUsers}
-                       // getCurrentPageUsers={this.getCurrentPageUsers.bind(this)}
+                    // getCurrentPageUsers={this.getCurrentPageUsers.bind(this)}
                        currentPage={this.props.currentPage}
                        users={this.props.users}
                        pageSize={this.props.pageSize}
@@ -80,17 +80,24 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        followUser: (userId) => dispatch(followUserAction(userId)),
-        unfollowUser: (userId) => dispatch(unfollowUserAction(userId)),
-        setUsers: (users) => dispatch(setUsersAction(users)),
-        setCurrentPage: (currentPage) => dispatch(setCurrentPageAction(currentPage)),
-        setTotalUsers: (totalUsers) => dispatch(setTotalUsersAction(totalUsers)),
-        setIsFetched: (isFetched) => dispatch(setIsFetchedAction(isFetched))
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         followUser: (userId) => dispatch(followUserAction(userId)),
+//         unfollowUser: (userId) => dispatch(unfollowUserAction(userId)),
+//         setUsers: (users) => dispatch(setUsersAction(users)),
+//         setCurrentPage: (currentPage) => dispatch(setCurrentPageAction(currentPage)),
+//         setTotalUsers: (totalUsers) => dispatch(setTotalUsersAction(totalUsers)),
+//         setIsFetched: (isFetched) => dispatch(setIsFetchedAction(isFetched))
+//     }
+// }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIContainer)
+const UsersContainer = connect(mapStateToProps, {
+    followUser,
+    unfollowUser,
+    setUsers,
+    setCurrentPage,
+    setTotalUsers,
+    setIsFetched
+})(UsersAPIContainer)
 
 export default UsersContainer;
