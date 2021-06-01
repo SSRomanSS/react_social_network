@@ -1,14 +1,35 @@
 import classes from './ProfileInfo.module.css'
+import defaultLogo from './../../../assets/images/img.png'
+import Preloader from "../../common/Preloader/Preloader";
 
-function ProfileInfo() {
+function ProfileInfo(props) {
+
+    if (!props.profile) {
+        return <Preloader />
+    }
+
+    let photo;
+
+    if (props.profile.photos.large) {
+        photo = <img src={props.profile.photos.large}/>
+    } else {
+        photo = <img src={defaultLogo}/>
+    }
+
     return (
         <div className={classes.profileInfo}>
-            <img src={'https://s3-eu-west-1.amazonaws.com/uploads.playbaamboozle.com/uploads/images/185783/1618342729_266854_url.jpeg'}/>
             <div>
-                ava + description
+                {photo}
+            </div>
+            <div>
+                {props.profile.aboutMe}
+            </div>
+            <div>
+                {props.profile.fullName}
             </div>
         </div>
     )
 }
-            
+
 export default ProfileInfo;
+

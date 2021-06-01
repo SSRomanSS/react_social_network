@@ -1,5 +1,6 @@
 import classes from './User.module.css'
 import defaultLogo from'../../../assets/images/img.png'
+import {NavLink} from "react-router-dom";
 
 function User(props) {
 
@@ -9,7 +10,9 @@ function User(props) {
     return (
         <div className={classes.user}>
             <div>
-                <img src={props.user.photos.small || defaultLogo}/>
+                <NavLink to={`/profile/${props.user.id}`}>
+                    <img src={props.user.photos.small || defaultLogo}/>
+                </NavLink>
             </div>
             <div>
                 {props.user.status || 'Life is good!!!'}

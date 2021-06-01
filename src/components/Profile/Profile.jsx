@@ -3,10 +3,11 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import PostsContainer from "./Posts/PostsContainer";
 
 function Profile(props) {
+    debugger
     return (
         <div className={classes.profile}>
-            <ProfileInfo/>
-            <PostsContainer store={props.store}/>
+            <ProfileInfo profile={props.profile}/>
+            <PostsContainer />
         </div>
     )
 }

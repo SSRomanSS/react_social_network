@@ -1,5 +1,6 @@
 const ADD_NEW_POST = 'ADD-NEW-POST'
 const UPDATE_TEXT = 'UPDATE-TEXT'
+const FETCH_PROFILE_INFO = 'FETCH_PROFILE_INFO'
 
 let initialState = {
     posts: [
@@ -11,6 +12,7 @@ let initialState = {
         {id: 7, message: '666666', likes: 4},
     ],
     textAreaData: ' Hello from state.js',
+    profile: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -33,6 +35,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 textAreaData: action.newText
             };
+        case(FETCH_PROFILE_INFO):
+            return {
+                ...state,
+                profile: action.profile,
+            };
 
 
         default:
@@ -41,7 +48,9 @@ const profileReducer = (state = initialState, action) => {
 }
 
 
-export const addPostAction = () => ({type: ADD_NEW_POST});
-export const updateTextAction = (text) => ({type: UPDATE_TEXT, newText: text});
+export const addPost = () => ({type: ADD_NEW_POST});
+export const updateText = (text) => ({type: UPDATE_TEXT, newText: text});
+export const updateProfileInfo = (profile) => ({type: FETCH_PROFILE_INFO, profile});
+
 
 export default profileReducer;

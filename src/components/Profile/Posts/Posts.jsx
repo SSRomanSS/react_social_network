@@ -16,7 +16,7 @@ function Posts(props) {
 
     let updateData = () => {
         let text = newPostElement.current.value
-        props.updateData(text)
+        props.updateText(text)
     }
 
 

@@ -20,15 +20,16 @@ let initialState = {
 }
 
 const dialogReducer = (state = initialState, action) => {
+
     switch (action.type) {
 
         case(ADD_NEW_MESSAGE):
+            let newMessage = {message: state.newMessageBody}
             return {
                 ...state,
-                messages: [...state.messages, state.newMessageBody],
+                messages: [...state.messages, newMessage],
                 newMessageBody: ''
             };
-
 
         case(UPDATE_MESSAGE_BODY):
 
