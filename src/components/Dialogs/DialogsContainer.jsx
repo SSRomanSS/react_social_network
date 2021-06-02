@@ -1,5 +1,5 @@
 
-import {addMessageAction, updateMessageBodyAction} from "../../redux/dialogReducer";
+import {addMessageAction} from "../../redux/dialogReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
@@ -15,8 +15,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        sentMessage: () => dispatch(addMessageAction()),
-        updateMessageBody: (body) => dispatch(updateMessageBodyAction(body))
+        sentMessage: (data) => dispatch(addMessageAction(data)),
 
     }
 }

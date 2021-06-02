@@ -16,7 +16,6 @@ let initialState = {
         {message: 'Yo'},
         {message: 'Bye'},
     ],
-    newMessageBody: '',
 }
 
 const dialogReducer = (state = initialState, action) => {
@@ -24,19 +23,13 @@ const dialogReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case(ADD_NEW_MESSAGE):
-            let newMessage = {message: state.newMessageBody}
+            let newMessage = {message: action.newMessageBody}
             return {
                 ...state,
                 messages: [...state.messages, newMessage],
-                newMessageBody: ''
+
             };
 
-        case(UPDATE_MESSAGE_BODY):
-
-            return {
-                ...state,
-                newMessageBody: action.newBody
-            };
 
 
         default:
@@ -46,7 +39,7 @@ const dialogReducer = (state = initialState, action) => {
 
 }
 
-export const addMessageAction = () => ({type: ADD_NEW_MESSAGE});
-export const updateMessageBodyAction = (body) => ({type: UPDATE_MESSAGE_BODY, newBody: body});
+export const addMessageAction = (newMessageBody) => ({type: ADD_NEW_MESSAGE, newMessageBody});
+
 
 export default dialogReducer;
