@@ -3,54 +3,30 @@ import Users from "./Users";
 import {
     followUser,
     unfollowUser,
-    setUsers,
-    setCurrentPage,
-    setTotalUsers,
-    setIsFetched
+    getUsers
 } from "../../redux/usersReducer";
 import React from "react";
 import Preloader from "../common/Preloader/Preloader";
 
 
-const axios = require('axios')
-
-
 class UsersAPIContainer extends React.Component {
 
-
     componentDidMount() {
-        this.props.setIsFetched(false)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
-            .then((data) => {
-
-                this.props.setUsers(data.data.items);
-                this.props.setTotalUsers(data.data.totalCount)
-                this.props.setIsFetched(true)
-            })
+        this.props.getUsers(this.props.pageSize, this.props.currentPage)
     }
+
 
     getCurrentPageUsers = (currentPage) => {
-        this.props.setIsFetched(false)
-        this.props.setCurrentPage(currentPage);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`)
-            .then((data) => {
-                this.props.setUsers(data.data.items)
-                this.props.setIsFetched(true)
-            })
+        this.props.getUsers(this.props.pageSize, currentPage)
     }
 
-    // getCurrentPageUsers (currentPage) {
-    //     this.props.setIsFetched(false)
-    //     this.props.setCurrentPage(currentPage);
-    //     axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`)
-    //         .then((data) => {
-    //             this.props.setUsers(data.data.items)
-    //             this.props.setIsFetched(true)
-    //         })
+    // getCurrentPageUsers (currentPage)  {
+    //     this.props.getUsers(this.props.pageSize, currentPage)
     // }
 
 
     render() {
+
         if (this.props.isFetched) {
             return (
                 <Users followUser={this.props.followUser}
@@ -80,24 +56,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         followUser: (userId) => dispatch(followUserAction(userId)),
-//         unfollowUser: (userId) => dispatch(unfollowUserAction(userId)),
-//         setUsers: (users) => dispatch(setUsersAction(users)),
-//         setCurrentPage: (currentPage) => dispatch(setCurrentPageAction(currentPage)),
-//         setTotalUsers: (totalUsers) => dispatch(setTotalUsersAction(totalUsers)),
-//         setIsFetched: (isFetched) => dispatch(setIsFetchedAction(isFetched))
-//     }
-// }
-
 const UsersContainer = connect(mapStateToProps, {
     followUser,
     unfollowUser,
-    setUsers,
-    setCurrentPage,
-    setTotalUsers,
-    setIsFetched
+    getUsers,
 })(UsersAPIContainer)
 
 export default UsersContainer;

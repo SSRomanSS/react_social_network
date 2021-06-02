@@ -1,3 +1,5 @@
+import {profileAPI} from "../api/api";
+
 const ADD_NEW_POST = 'ADD-NEW-POST'
 const UPDATE_TEXT = 'UPDATE-TEXT'
 const FETCH_PROFILE_INFO = 'FETCH_PROFILE_INFO'
@@ -51,6 +53,15 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = () => ({type: ADD_NEW_POST});
 export const updateText = (text) => ({type: UPDATE_TEXT, newText: text});
 export const updateProfileInfo = (profile) => ({type: FETCH_PROFILE_INFO, profile});
+
+export const getProfile = (userId) => {
+    return (dispatch) => {
+        profileAPI.getProfile(userId)
+            .then((data) => {
+                dispatch(updateProfileInfo(data.data));
+            })
+    }
+}
 
 
 export default profileReducer;
