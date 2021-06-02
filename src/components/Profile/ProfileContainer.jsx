@@ -3,6 +3,7 @@ import React from "react";
 import {withRouter} from "react-router-dom";
 import Profile from "./Profile";
 import {getProfile} from "../../redux/profileReducer";
+import {compose} from "redux";
 
 
 class ProfileAPIContainer extends React.Component {
@@ -26,11 +27,21 @@ const mapStateToProps = (state) => {
     }
 }
 
+//
+// const WithUrlProfileContainer = withRouter(ProfileAPIContainer)
+//
+// const ProfileContainer = connect(mapStateToProps, {
+//     getProfile,
+// })(WithUrlProfileContainer)
+//
+// export default ProfileContainer;
 
-const WithUrlProfileContainer = withRouter(ProfileAPIContainer)
+// the same with compose:
 
-const ProfileContainer = connect(mapStateToProps, {
-    getProfile,
-})(WithUrlProfileContainer)
-
+const ProfileContainer = compose(
+    withRouter,
+    connect(
+        mapStateToProps,
+        {getProfile}),
+    )(ProfileAPIContainer)
 export default ProfileContainer;
