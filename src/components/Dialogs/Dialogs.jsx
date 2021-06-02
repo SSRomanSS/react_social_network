@@ -3,15 +3,22 @@ import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import React from "react";
 import {Field, reduxForm} from 'redux-form'
+import {customFormFields} from "../common/Forms/FormFields";
+import {maxLength, required} from "../../utils/validators";
 
 
 function Dialogs(props) {
+
+    let length10 = maxLength(10)
 
     let MessageForm = props => {
         // const {handleSubmit} = props
         return <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={'textarea'} name={'newMessageBody'} placeholder={'Input message here'}/>
+                <Field component={customFormFields}
+                       name={'newMessageBody'}
+                       placeholder={'Input message here'}
+                       validate={[required, length10]}/>
             </div>
             <div>
                 <button>Add post</button>
